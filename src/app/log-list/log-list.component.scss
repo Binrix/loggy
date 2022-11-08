@@ -1,0 +1,36 @@
+.upper-part {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    padding: 20px;
+    width: 500px;
+    margin: 100px auto;
+    box-shadow: #00a5adc7 0px 0px 50px;
+    border-radius: 10px;
+}
+
+.file-container {
+    width: 1000px;
+    background-color: white;
+    border-radius: 10px;
+    margin: 0 auto;
+    box-shadow: #00a5adc7 0px 0px 50px;
+    
+    .file {
+        background-color: #f1f1f1;
+        display: inline-block;
+        padding: 10px;
+        width: 293px;
+        margin: 15px 10px;
+        border-radius: 5px;
+        flex-basis: 33.33%;
+        transition: all .1s;
+        cursor: pointer;
+
+        &:hover {
+            background-color: #00a5adc7;
+            color: white;
+        }
+    }
+}
+
