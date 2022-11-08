@@ -19,14 +19,7 @@ export class AppComponent implements OnInit {
     return typeof entry == "string" ? true : false;
   }
 
-  public getDataFromEntry(entry: string | RegExpExecArray): string[] {
-    console.log(Array.isArray(entry));
-    if(Array.isArray(entry)) {
-      return entry;
-    } else {
-      return ['','','','','',''];
-    }
-  }
+  
 
   ngOnInit(): void { 
 

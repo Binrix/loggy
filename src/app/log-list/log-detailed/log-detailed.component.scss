@@ -1,0 +1,29 @@
+table {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    width: 1500px;
+    margin: 100px auto;
+
+    .wrap {
+        overflow-wrap: anywhere;
+    }
+    
+    .short {
+        width: 0;
+        white-space: nowrap;
+    }
+}
+
+tr {
+    height: 30px;
+}
+
+tr:nth-child(even) {
+    background-color: white;
+}
+
+th {
+    text-align: left;
+}
+

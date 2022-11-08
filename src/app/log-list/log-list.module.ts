@@ -4,7 +4,6 @@ import { LogListComponent } from "./log-list.component";
 
 @NgModule({
     declarations: [
-      LogListComponent,
       LogDetailedComponent
     ],
     imports: [],
