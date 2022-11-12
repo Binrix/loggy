@@ -21,6 +21,10 @@ export class LogListComponent implements OnInit {
 
   constructor(private es: ElectronService) { }
 
+  public closeDetailedView(close: boolean) {
+    this.showFileContent = close;
+  }
+
   public startAnalyze(fileName: string): void {
     this.renderer.analyzeFile(`${this.currentAnalyzedFolder}/${fileName}`).then((analyzeResult) => {
       // Class.toString() => class [className] {} => .split(" ") => length > 1 => typeof class == arr[1]
@@ -29,7 +33,6 @@ export class LogListComponent implements OnInit {
       this.showFileContent = true;
     });
   }
-
 
   public getFilesInFolder(pathToFolder: string): void {
     this.currentAnalyzedFolder = pathToFolder;
@@ -46,5 +49,4 @@ export class LogListComponent implements OnInit {
       console.log(errorMessage);
     });
   }
-
 }
