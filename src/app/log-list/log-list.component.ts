@@ -29,7 +29,6 @@ export class LogListComponent implements OnInit {
     this.renderer.analyzeFile(`${this.currentAnalyzedFolder}/${fileName}`).then((analyzeResult) => {
       // Class.toString() => class [className] {} => .split(" ") => length > 1 => typeof class == arr[1]
       this.analyzeResult = analyzeResult;
-      console.log(this.analyzeResult);
       this.showFileContent = true;
     });
   }
