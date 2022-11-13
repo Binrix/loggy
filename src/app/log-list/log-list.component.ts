@@ -12,11 +12,12 @@ import { Summarize } from '../interfaces/summarize.interface';
 export class LogListComponent implements OnInit {
   private renderer: IpcRenderer;
   private currentAnalyzedFolder = "";
-  
-  public analyzeResult: Summarize;
-  public filesFoundText = "0 file(s) have been found";
-  public errorMessage = "";
+
+  public error = "";
   public files: AnalyzableFile[] = [];
+  public analyzeResult: Summarize;
+  
+  public filesFoundText = "0 file(s) have been found";
   public showFileContent = false;
 
   constructor(private es: ElectronService) { }
@@ -45,7 +46,7 @@ export class LogListComponent implements OnInit {
   ngOnInit(): void {
     this.renderer = this.es.getRenderer();
     this.renderer.onError((errorMessage: string) => {
-      console.log(errorMessage);
+      this.error = errorMessage;
     });
   }
 }
