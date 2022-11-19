@@ -1,15 +1,24 @@
-<div class="upper-part">
-    <h2>Enter path to folder with logs</h2>
-    <input #path type="text" name="" id="">
-    <button (click)="getFilesInFolder(path.value)">Scan folder</button>
-    <p>{{ filesFoundText }}</p>
-</div>
-<div class="file-container">
-    <div class="file" *ngIf="!files.length">
-        <h4>No files</h4>
+<div *ngIf="!showFileContent; else showContent">
+    <div class="upper-part">
+        <div class="error" *ngIf="error.length > 0">
+            
+        </div>
+        <h2>Enter path to folder with logs</h2>
+        <input #path type="text" name="" id="">
+        <button (click)="getFilesInFolder(path.value)">Scan folder</button>
+        <p>{{ filesFoundText }}</p>
     </div>
-    <div class="file" (click)="startAnalyze(file.name)"  *ngFor="let file of files">
-        <p>{{ file.dateTime | date:"dd/MM/yyyy HH:mm:ss"}}</p>
-        <h4>{{ file.name }}</h4>
+    <div class="file-container">
+        <div class="file" *ngIf="!files.length">
+            <h4>No files</h4>
+        </div>
+        <div class="file" (click)="startAnalyze(file.name)"  *ngFor="let file of files">
+            <p>{{ file.dateTime | date:"dd/MM/yyyy HH:mm:ss"}}</p>
+            <h4>{{ file.name }}</h4>
+        </div>
     </div>
 </div>
+<ng-template #showContent>
+    <app-log-detailed (closeDetailedView)="closeDetailedView($event)" [fileContent]="analyzeResult"></app-log-detailed>
+</ng-template>
+

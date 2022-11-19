@@ -1,10 +1,10 @@
 {
   "name": "loggy",
   "version": "0.0.0",
-  "main": "app.js",
+  "main": "./electron/app.js",
   "scripts": {
     "ng": "ng",
-    "start": "ng build --base-href ./ && electron .",
+    "start": "ng build --base-href ./ --configuration development && electron .",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"

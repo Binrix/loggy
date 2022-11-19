@@ -1,9 +1,10 @@
+<button (click)="closeView()">Return</button>
 <table>
     <tr>
         <th>Sender</th>
         <th>Content</th>
     </tr>
-    <tr *ngFor="let log of analyzeResult.content | slice:analyzeResult.endOfBeginningIndex:analyzeResult.beginningOfEndIndex">
+    <tr *ngFor="let log of fileContent.content | slice:fileContent.endOfBeginningIndex:fileContent.beginningOfEndIndex">
         <td class="short" >{{ getDataFromEntry(log)[4] }}</td>
         <td class="wrap" >{{ getDataFromEntry(log)[5] }}</td>
     </tr>
