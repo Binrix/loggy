@@ -17,6 +17,10 @@ table {
 
 tr {
     height: 30px;
+
+    td {
+        font-size: 14px;
+    }
 }
 
 tr:nth-child(even) {
