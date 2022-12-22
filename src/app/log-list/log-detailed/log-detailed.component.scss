@@ -1,10 +1,10 @@
 table {
-    background-color: #fff;
     padding: 20px;
-    border-radius: 10px;
     width: 1500px;
     margin: 100px auto;
-
+    color: #787a7c;
+    border-spacing: 15px 0px;
+    
     .wrap {
         overflow-wrap: anywhere;
     }
@@ -15,16 +15,20 @@ table {
     }
 }
 
+.color-yellow {
+    color: #b79f75;
+}
+
+.color-red {
+    color: #e14949;
+}
+
 tr {
     height: 30px;
 
     td {
         font-size: 14px;
     }
-}
-
-tr:nth-child(even) {
-    background-color: white;
 }
 
 th {
