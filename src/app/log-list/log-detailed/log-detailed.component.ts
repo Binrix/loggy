@@ -25,6 +25,7 @@ export class LogDetailedComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log(this.fileContent);
   }
 
 }
