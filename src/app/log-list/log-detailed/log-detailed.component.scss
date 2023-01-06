@@ -2,7 +2,7 @@ table {
     padding: 20px;
     width: 1500px;
     margin: 100px auto;
-    color: #787a7c;
+    color: #b5b5b5;
     border-spacing: 15px 0px;
     
     .wrap {
@@ -13,6 +13,20 @@ table {
         width: 0;
         white-space: nowrap;
     }
+}
+
+.fade-out {
+    position: absolute;
+    right: 0;
+    width: 40px;
+    height: 100%;
+    z-index: 10;
+    background: linear-gradient(to left, #0f1214, transparent);
+    top: 0;
+}
+
+.line-number {
+    color: #787a7c;
 }
 
 .color-yellow {
