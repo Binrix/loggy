@@ -10,10 +10,25 @@ export class LogDetailedComponent implements OnInit {
   @Input() fileContent: Summarize;
   @Output() closeDetailedView: EventEmitter<boolean> = new EventEmitter();
 
+  public startIndex = 0;
+  public endIndex = 0;
+
   constructor() { }
 
   public closeView() {
     this.closeDetailedView.emit(false);
+  }
+
+  public isBeginningExpanded() {
+    return this.startIndex != this.fileContent.startIndex;
+  }
+
+  public toggleStart() {
+    this.startIndex != 0 ? this.startIndex = 0 : this.startIndex = this.fileContent.startIndex;
+  }
+
+  public toggleEnd() {
+    this.endIndex != this.fileContent.endIndex ? this.endIndex = this.fileContent.endIndex : this.endIndex = this.fileContent.content.length;
   }
 
   public getDataFromEntry(entry: string | RegExpExecArray): string[] {
@@ -25,7 +40,7 @@ export class LogDetailedComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.fileContent);
+    this.startIndex = this.fileContent.startIndex;
+    this.endIndex = this.fileContent.endIndex;
   }
-
 }

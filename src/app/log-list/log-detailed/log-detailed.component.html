@@ -6,10 +6,21 @@
         <th>Sender</th>
         <th>Content</th>
     </tr>
-    <tr [ngClass]="'color-' + (getDataFromEntry(log)[5] | statusToColor)" *ngFor="let log of fileContent.content | slice:fileContent.endOfBeginningIndex:fileContent.beginningOfEndIndex; let i = index">
-        <td class="short line-number">{{ fileContent.endOfBeginningIndex + i + 1 }}</td>
+    <tr>
+        <td colspan="4">
+            {{ fileContent.startIndex + 1}} rows have been removed from the start. <button (click)="toggleStart()">Show instead</button>
+        </td>
+    </tr>
+    <tr [ngClass]="'color-' + (getDataFromEntry(log)[5] | statusToColor)" *ngFor="let log of fileContent.content | slice:startIndex:endIndex; let i = index">
+        <td class="short line-number">{{ (isBeginningExpanded() ? 0 : fileContent.startIndex+1) + i + 1 }}</td>
         <td class="short">{{ getDataFromEntry(log)[2] | extractTime }}</td>
         <td style="position: relative;" class="short">{{ getDataFromEntry(log)[4] | decreaseText:17 }}<div class="fade-out"></div></td>
         <td class="wrap">{{ getDataFromEntry(log)[5] }}</td>
+    </tr>
+    <tr>
+        <td *ngIf="endIndex == fileContent.endIndex; else showHideButton"  colspan="4">{{ fileContent.content.length - fileContent.endIndex + 1 }} rows have been removed from the ending. <button (click)="toggleEnd()">Show instead</button></td>
+        <ng-template #showHideButton>
+            <button (click)="toggleEnd()">Hide rows</button>
+        </ng-template>
     </tr>
 </table>

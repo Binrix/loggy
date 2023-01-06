@@ -43,8 +43,8 @@ class Analyzer {
     }
     analyzeFile(path) {
         let summarize = {
-            endOfBeginningIndex: 0,
-            beginningOfEndIndex: 0,
+            startIndex: 0,
+            endIndex: 0,
             content: []
         };
     
@@ -63,9 +63,9 @@ class Analyzer {
     
             if(result != null) {
                 if(gameInitRegex.test(result.groups["text"])) {
-                    summarize.endOfBeginningIndex = i;
+                    summarize.startIndex = i;
                 } else if(gameShutdownRegex.test(result.groups["text"])) {
-                    summarize.beginningOfEndIndex = i;
+                    summarize.endIndex = i;
                 }
     
                 summarize.content.push(result);

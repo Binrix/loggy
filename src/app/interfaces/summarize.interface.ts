@@ -1,5 +1,5 @@
 export interface Summarize {
-    endOfBeginningIndex: number;
-    beginningOfEndIndex: number;
+    startIndex: number;
+    endIndex: number;
     content: (RegExpExecArray | string)[];
 }
