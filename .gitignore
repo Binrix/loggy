@@ -8,6 +8,7 @@
 /tmp
 /out-tsc
 /bazel-out
+/electron/dist
 
 # Node
 /node_modules

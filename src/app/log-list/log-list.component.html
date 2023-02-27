@@ -12,9 +12,11 @@
         <div class="file" *ngIf="!files.length">
             <h4>No files</h4>
         </div>
-        <div class="file" (click)="startAnalyze(file.name)"  *ngFor="let file of files">
-            <p>{{ file.dateTime | date:"dd/MM/yyyy HH:mm:ss"}}</p>
-            <h4>{{ file.name }}</h4>
+        <div class="file" (click)="startAnalyze(file)"  *ngFor="let file of files">
+            <p>{{ file.modifiedDate | date:"dd/MM/yyyy HH:mm:ss"}}</p>
+            <div *ngFor="let name of file.names">
+                <h4>{{ name }}</h4>
+            </div>
         </div>
     </div>
 </div>

@@ -1,0 +1,60 @@
+// class Analyzer {
+//     analyzeFolder(path) {
+//         console.log("analyze folder");
+//         try {
+//             console.log("path: " + path);
+//             let fileNames = [];
+//             let files = [];
+
+//             fileNames = fs.readdirSync(path);
+    
+//             fileNames.forEach(fileName => {
+//                 let fileObject = { name: fileName, dateTime: fs.statSync(`${path}/${fileName}`).ctime.getTime() };
+//                 files.push(fileObject);
+//             });
+
+//             files.sort((a, b) => a.dateTime - b.dateTime);
+//             lastFiles = files;
+//             return files;
+//         } catch (error) {
+//             console.log("Error");
+//         }
+//     }
+//     analyzeFile(path) {
+//         let summarize = {
+//             startIndex: 0,
+//             endIndex: 0,
+//             content: []
+//         };
+    
+//         let regex = new RegExp(/^(?:(\[(?<time>[0-9\.:\-]{20,30})\])(\[[\s\d]{0,}\]))?(?<category>Log[A-Z]{1}[A-Za-z]+)(?::\s)(?<text>.*)$/);
+    
+//         let gameClassRegex = new RegExp(/^(?:Game class is) '(?<gamemode>[a-zA-Z_]+)'$/);
+//         let gameInitRegex = new RegExp(/.*Engine(?: is)? [Ii]nitialized.*/);
+//         let gameShutdownRegex = new RegExp(/^(Game engine shut down)$/);
+    
+//         let data = fs.readFileSync(path, { encoding: 'utf8' });
+    
+//         data = data.replaceAll("\r", "").split("\n");
+    
+//         let relatedFiles = lastFiles.filter((a, b) => )
+
+//         for(let i = 0; i < data.length; i++) {
+//             let result = regex.exec(data[i]);
+    
+//             if(result != null) {
+//                 if(gameInitRegex.test(result.groups["text"])) {
+//                     summarize.startIndex = i;
+//                 } else if(gameShutdownRegex.test(result.groups["text"])) {
+//                     summarize.endIndex = i;
+//                 }
+    
+//                 summarize.content.push(result);
+//             } else {
+//                 summarize.content.push(data[i]);
+//             }
+//         }
+    
+//         return summarize;
+//     }
+// }

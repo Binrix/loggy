@@ -1,0 +1,20 @@
+{
+    "compilerOptions": {
+        "target": "ES6",
+        "module": "CommonJS",
+        "sourceMap": false,
+        "removeComments": true,
+        "outDir": "./dist",
+        "moduleResolution": "node",
+        "lib": [
+            "ES2021.String"
+        ]
+    },
+    "include": [
+        "./**/*.ts"
+    ],
+    "exclude": [
+        "./out.d.ts",
+        "./preload.js"
+    ],
+}

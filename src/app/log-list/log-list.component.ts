@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { CustomFile } from '../interfaces/custom-file.interface';
 import { ElectronService } from '../electron.service';
-import { AnalyzableFile } from '../interfaces/file.interface';
-import { IpcRenderer } from '../interfaces/ipcRenderer.interface';
+import { IpcRenderer } from '../interfaces/ipc-renderer.interface';
 import { Summarize } from '../interfaces/summarize.interface';
 
 @Component({
@@ -14,8 +14,8 @@ export class LogListComponent implements OnInit {
   private currentAnalyzedFolder = "";
 
   public error = "";
-  public files: AnalyzableFile[] = [];
-  public analyzeResult: Summarize;
+  public files: CustomFile[] = [];
+  public analyzeResults: Summarize[];
   
   public filesFoundText = "0 file(s) have been found";
   public showFileContent = false;
@@ -26,10 +26,12 @@ export class LogListComponent implements OnInit {
     this.showFileContent = close;
   }
 
-  public startAnalyze(fileName: string): void {
-    this.renderer.analyzeFile(`${this.currentAnalyzedFolder}/${fileName}`).then((analyzeResult) => {
-      // Class.toString() => class [className] {} => .split(" ") => length > 1 => typeof class == arr[1]
-      this.analyzeResult = analyzeResult;
+  public startAnalyze(file: CustomFile): void {
+    this.renderer.analyzeFile(file).then((analyzeResults) => {
+      this.analyzeResults = analyzeResults;
+
+      console.log(analyzeResults);
+
       this.showFileContent = true;
     });
   }
@@ -37,8 +39,9 @@ export class LogListComponent implements OnInit {
   public getFilesInFolder(pathToFolder: string): void {
     this.currentAnalyzedFolder = pathToFolder;
 
-    this.renderer.sendFolderPath(pathToFolder).then((files: AnalyzableFile[]) => {
+    this.renderer.sendFolderPath(pathToFolder).then((files: CustomFile[]) => {
       this.files = files;
+      console.log(this.files);
       this.filesFoundText = `${this.files.length} file(s) have been found`;
     });
   }
