@@ -16,15 +16,5 @@ export class LogDetailedComponent implements OnInit {
     this.closeDetailedView.emit(false);
   }
 
-  public getDataFromEntry(entry: string | RegExpExecArray): string[] {
-    if(Array.isArray(entry)) {
-      return entry;
-    } else {
-      return ['','','','','',''];
-    }
-  }
-
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void { }
 }

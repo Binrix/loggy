@@ -5,7 +5,14 @@
         <th>Content</th>
     </tr>
     <tr *ngFor="let log of fileContent.content | slice:fileContent.endOfBeginningIndex:fileContent.beginningOfEndIndex">
-        <td class="short" >{{ getDataFromEntry(log)[4] }}</td>
-        <td class="wrap" >{{ getDataFromEntry(log)[5] }}</td>
+        <td class="short" >{{ log.initiator }}</td>
+        <td class="wrap" >
+            <span 
+                *ngFor="let word of log.sentence" 
+                [style.color]="word.color" 
+                >
+                {{ word.text }}
+            </span>
+        </td>
     </tr>
 </table>

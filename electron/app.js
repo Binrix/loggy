@@ -60,22 +60,54 @@ class Analyzer {
     
         for(let i = 0; i < data.length; i++) {
             let result = regex.exec(data[i]);
-    
+
             if(result != null) {
+                var sentence = result.groups["text"];
+                
                 if(gameInitRegex.test(result.groups["text"])) {
                     summarize.endOfBeginningIndex = i;
                 } else if(gameShutdownRegex.test(result.groups["text"])) {
                     summarize.beginningOfEndIndex = i;
                 }
-    
-                summarize.content.push(result);
+
+                var words = sentence.split(" ");
+                var processedWords = [];
+                for(let j = 0; j < words.length; j++) {
+                    var word = words[j];
+                    let color = "#212121";
+
+                    if(processWord(word)) {
+                        color = "red"; 
+                    }
+
+                    processedWords.push({
+                        text: word,
+                        color: color
+                    });
+                }
+
+                summarize.content.push({
+                    initiator: result.length >= 4 ? result[4] : "undefined",
+                    sentence: processedWords,
+                });
             } else {
-                summarize.content.push(data[i]);
+                summarize.content.push({
+                    initiator: 'undefined',
+                    sentence: [{ text: 'undefined', color: '#212121' }],
+                })
             }
         }
     
+        console.log("summarize.content");
+        console.log(summarize.content);
+
         return summarize;
     }
+}
+
+function processWord(word) {
+    let regex = new RegExp(/\d+/g);
+    return regex.test(word);
 }
 
 // Init
